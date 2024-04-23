@@ -30,11 +30,18 @@ ll arrange(tree *t, ll N) {
     if (t == nullptr) return N+1;
     ll l = arrange(t->left, N);
     ll r = arrange(t->right, N);
-    if (l > r && (l <= N || (l == N+1 && t->val > r))) {
+    if (l > r && l <= N && r <= N) {
             tree *tmp = t->left;
             t->left = t->right;
             t->right = tmp;
     }  
+    else if (l == N+1 || r == N+1) {
+        if ((l != N+1 && t->val < l) || (r != N+1 && t->val > r)) {
+            tree *tmp = t->left;
+            t->left = t->right;
+            t->right = tmp;
+        }
+    }
     return min(l, min(r, t->val));
 }
 

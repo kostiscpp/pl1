@@ -25,9 +25,9 @@ int main (int argc, char **argv) {
     for (ll i = 0; i < N; i++) { fscanf(f, "%lld", &S[i]); total_sum += S[i]; }
     fclose(f);
     ll sum = 2*S[0], best_diff = abs(total_sum - sum);
-    for(int i = 0, j = 0; i < N; i++) { 
-        while (j < N && abs(total_sum - sum) > abs(total_sum - (sum + 2*S[j+1]))) sum += 2*S[++j];
-        best_diff = min(best_diff, abs(total_sum - sum));
+    for(int i = 0, j = 0; i < N; i++) {
+        while (j < N-1 && abs(total_sum - sum) > abs(total_sum - (sum + 2*S[j+1]))) sum += 2*S[++j];
+		best_diff = min(best_diff, abs(total_sum - sum));
         if (best_diff == 0) break;
         sum -= 2*S[i];
     }

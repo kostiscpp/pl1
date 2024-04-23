@@ -1,7 +1,7 @@
 (***************************************************************************
   Project     : Programming Languages 1 - Assignment 1 - Exercise 1
-  Author(s)   : Konstantinos Katsikopoulos
-  Date        : April 08, 2013
+  Author(s)   : Konstantinos Katsikopoulos - Vassilis Malos
+  Date        : 22/4/2024
   Description : Teh S3cret Pl4n
   -----------
   School of ECE, National Technical University of Athens.
@@ -94,7 +94,7 @@ fun solve (n, S: int list) =
                 loop (abs(total_sum - 2*(List.hd S)), 2*(List.hd S), S, S)
             end
     in
-        calcMinDiff (total_sum, S, n)
+       print((Int.toString (calcMinDiff (total_sum, S, n))) ^ "\n")
     end
 
 (* Parse and process the file, then solve the partition problem. *)
