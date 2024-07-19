@@ -49,12 +49,12 @@ fun Arrange tree N =
             val (l , Left) = Arrange left N
             val (r, Right) = Arrange right N
         in
-            if (l > r andalso l <= N andalso r <= N) then (Int.min(r, v) , Node (v, Right, Left))
+            if (l > r andalso l <= N andalso r <= N) then (r , Node (v, Right, Left))
             else (if (l = (N+1) orelse r = (N+1)) then (
-                if ((l <> (N+1) andalso v < l) orelse (r <> (N+1) andalso v > r)) then (Int.min(r, Int.min(l,v)), Node (v, Right, Left))
-                else (Int.min(r, Int.min(l,v)), Node (v, Left, Right))
+                if ((l <> (N+1) andalso v < l) orelse (r <> (N+1) andalso v > r)) then ((if r = (N+1) then v else r), Node (v, Right, Left))
+                else (if l = (N+1) then v else l, Node (v, Left, Right))
                 )
-                else (Int.min(r, Int.min(l,v)), Node (v, Left, Right))
+                else (if l = (N+1) then v else l, Node (v, Left, Right))
             )
         end
 

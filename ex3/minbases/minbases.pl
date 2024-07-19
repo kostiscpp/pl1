@@ -8,7 +8,7 @@ same_base(X, _, V) :-
     X =:= V.
 
 find_base(N, X, Result) :-
-    (X =:= N ; 
+    (N is X+1; 
     (X1 is X // N, Xmod is X mod N, same_base(X1, N, Xmod))),
     !,
     Result = N.

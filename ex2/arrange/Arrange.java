@@ -74,14 +74,16 @@ public class Arrange {
                 Tree temp = node.left;
                 node.left = node.right;
                 node.right = temp;
+                l = r;
             } else if (l == N + 1 || r == N + 1) {
                 if ((l != N + 1 && node.val < l) || (r != N + 1 && node.val > r)) {
                     Tree temp = node.left;
                     node.left = node.right;
                     node.right = temp;
+                    l = r;
                 }
             }
-            node.minVal = Math.min(node.val, Math.min(l, r));
+            node.minVal = (l == N+1 ? node.val : l);
         }
     }
 

@@ -65,14 +65,16 @@ void arrange(tree* root, ll N) {
             tree *tmp = node->left;
             node->left = node->right;
             node->right = tmp;
+            l = r;
         } else if (l == N+1 || r == N+1) {
             if ((l != N+1 && node->val < l) || (r != N+1 && node->val > r)) {
                 tree *tmp = node->left;
                 node->left = node->right;
                 node->right = tmp;
+                l = r;
             }
         }
-        node->min_val = min(node->val, min(l, r));
+        node->min_val = l == N+1 ? node->val : l;
     }
 }
 void print_tree(tree *t) {
